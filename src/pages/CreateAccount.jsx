@@ -11,6 +11,8 @@ export default function CreateAccount() {
   const navigate = useNavigate();
   const { setUser } = useUser();
 
+  const [apiError, setAPIError] = useState(null);
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -33,8 +35,6 @@ export default function CreateAccount() {
     useState(false);
   const [passwordConfirmationFocus, setPasswordConfirmationFocus] =
     useState(false);
-
-  const [success, setSuccess] = useState(false);
 
   // validate username
   function validateUsername(username) {
@@ -73,9 +73,12 @@ export default function CreateAccount() {
         const user = await response.json();
         setUser(user);
         navigate("/successful-login");
+      } else if (!response.ok) {
+        const err = await response.json();
+        setAPIError(err);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   }
 
@@ -132,6 +135,9 @@ export default function CreateAccount() {
               Username must be at between 5 to 15 characters and must not start
               or end with numbers
             </p>
+            {apiError ? (
+              <p className="error">{apiError.errors.username}</p>
+            ) : null}
           </div>
           <div>
             <label className="input-box" htmlFor="email">
@@ -157,6 +163,7 @@ export default function CreateAccount() {
             >
               email must be in valid format: "example@some.com"
             </p>
+            {apiError ? <p className="error">{apiError.errors.email}</p> : null}
           </div>
 
           <div>
@@ -185,6 +192,9 @@ export default function CreateAccount() {
             >
               Password must be at least 8 characters
             </p>
+            {apiError ? (
+              <p className="error">{apiError.errors.password}</p>
+            ) : null}
           </div>
           <div>
             <label className="input-box" htmlFor="password_confirmation">
