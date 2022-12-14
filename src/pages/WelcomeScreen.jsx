@@ -1,6 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import welcomeScreen from "../assets/welcome-screen.svg";
-import Button from "../components/Button";
 
 export default function WelcomeScreen() {
   return (
@@ -9,7 +9,9 @@ export default function WelcomeScreen() {
       <div className="content-box">
         <h1>Welcome</h1>
         <p>We’re glad you’re here! Sign up to start browing the website.</p>
-        <Button>Get Started</Button>
+        <Link to="/register">
+          <button className="btn">Get Started</button>
+        </Link>
       </div>
     </div>
   );

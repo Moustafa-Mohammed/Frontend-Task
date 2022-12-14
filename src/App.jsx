@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import CreateAccount from "./pages/CreateAccount";
 import SuccessLogin from "./pages/SuccessLogin";
 import WelcomeScreen from "./pages/WelcomeScreen";
+
+import "./App.css";
 
 function App() {
   return (

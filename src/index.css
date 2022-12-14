@@ -1,10 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap");
+
+@font-face {
+  font-family: "Abdoullah Ashgar EL-kharef";
+  src: url("./fonts/Abdoullah-Ashgar-EL-kharef.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap");
 
 .wrapper {
   display: flex;
@@ -12,4 +17,9 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-image: url("./assets/background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  font-family: "Mulish", sans-serif;
 }
